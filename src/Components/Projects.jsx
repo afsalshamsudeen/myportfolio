@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import CryptoApp from "../assets/viberr.png";
+import CryptoApp from "../assets/cryptoapp.png";
 import EcommerceApp from "../assets/ecommerce.png";
 import StreamingPlatform from "../assets/streaming_platform.png";
-import Salhurry from "../assets/job_finder.png"
+import Salhurry from "../assets/jobfinder.png"
 
 import ProjectCard from "../Common/ProjectCard";
 
@@ -20,13 +20,18 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 30px;
+  padding: 20px;
 
-  @media (width >= 800px) {
+  @media (min-width: 800px) {
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-evenly;
-      padding: 0 30px;
+      justify-content: space-around;
+      padding: 0 60px;
+      gap: 40px;
     
+  }
+  @media (min-width: 1200px) {
+      padding: 0 100px; // More padding for wider screens
   }
 `;
 

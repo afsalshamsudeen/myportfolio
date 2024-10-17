@@ -2,6 +2,26 @@ import styled from "styled-components"
 
 import CheckMarkIconDark from "../assets/checkmark-dark.svg"
 import CheckMarkIconLight from "../assets/checkmark-light.svg"
+import HTMLLIGHT from "../assets/htmllight.png"
+import HTMLDARK from "../assets/htmldark.png"
+import CSSLIGHT from "../assets/csslight.png"
+import CSSDARK from "../assets/cssdark.png"
+import JAVASCRIPTLIGHT from "../assets/javascriptlight.png"
+import JAVASCRIPTDARK from "../assets/javascriptdark.png"
+import REACTLIGHT from "../assets/reactlight.png"
+import REACTDARK from "../assets/reactdark.png"
+import NodejsLight from "../assets/nodejslight.png"
+import NodejsDark from "../assets/nodejsdark.png"
+import JsonLight from "../assets/jsonlight.png"
+import JsonDark from "../assets/jsondark.png"
+import MongoDBLight from "../assets/mongodblight.png"
+import MongoDBDark from "../assets/mongodbdark.png"
+import GitLight from "../assets/gitlight.png"
+import GitDark from "../assets/gitdark.png"
+import PostmanLight from "../assets/postmanlight.png"
+import PostmanDark from "../assets/postmandark.png"
+import BootstrapLight from "../assets/bootstraplight.png"
+import BootstrapDark from "../assets/bootstrapdark.png"
 import MySkills from "../Common/MySkills";
 import { useTheme } from "../Common/ThemeContext";
 
@@ -47,29 +67,39 @@ const Hr = styled.hr`
 const Skills = () => {
   const {theme} = useTheme();
   const CheckMark = theme === 'light' ? CheckMarkIconLight : CheckMarkIconDark;
-  return (
+  const HTML = theme === 'light' ? HTMLDARK : HTMLLIGHT;
+  const CSS = theme === 'light' ? CSSLIGHT : CSSDARK;
+  const JS = theme === 'light' ? JAVASCRIPTLIGHT : JAVASCRIPTDARK;
+  const REACT = theme === 'light' ? REACTLIGHT : REACTDARK;
+  const NodeJS = theme === 'light' ? NodejsLight : NodejsDark;
+  const JSON = theme === 'light' ? JsonLight : JsonDark;
+  const MONGO = theme === 'light' ? MongoDBLight : MongoDBDark;
+  const GIT = theme === 'light' ? GitLight : GitDark;
+  const Postman = theme === 'light' ? PostmanLight : PostmanDark;
+  const Bootstrap = theme === 'light' ? BootstrapLight : BootstrapDark;
+    return (
     <Container>
         <Title>Skills</Title>
       <Wrapper>
-        <MySkills src={CheckMark} skill={"HTML"} />
-        <MySkills src={CheckMark} skill={"CSS"} />
-        <MySkills src={CheckMark} skill={"JavaScript"} />
-        <MySkills src={CheckMark} skill={"React JS"} />
+        <MySkills src={HTML} skill={"HTML"} />
+        <MySkills src={CSS} skill={"CSS"} />
+        <MySkills src={JS} skill={"JavaScript"} />
+        <MySkills src={REACT} skill={"React JS"} />
       </Wrapper>
         <Hr/>
       <Wrapper>
-        <MySkills src={CheckMark} skill={"Node JS"} />
+        <MySkills src={NodeJS} skill={"Node JS"} />
         <MySkills src={CheckMark} skill={"Express"} />
-        <MySkills src={CheckMark} skill={"JSON"} />
-        <MySkills src={CheckMark} skill={"MongoDB"} />
-        <MySkills src={CheckMark} skill={"Firebase"} />
+        <MySkills src={JSON} skill={"JSON"} />
+        <MySkills src={MONGO} skill={"MongoDB"} />
+        <MySkills src={MONGO} skill={"Firebase"} />
       </Wrapper>
         <Hr/>
       <Wrapper>
-        <MySkills src={CheckMark} skill={"Git"} />
-        <MySkills src={CheckMark} skill={"Redux"} />
-        <MySkills src={CheckMark} skill={"Postman"} />
-        <MySkills src={CheckMark} skill={"Bootstrap"} />
+        <MySkills src={GIT} skill={"Git"} />
+        <MySkills src={REACT} skill={"Redux"} />
+        <MySkills src={Postman} skill={"Postman"} />
+        <MySkills src={Bootstrap} skill={"Bootstrap"} />
       </Wrapper>
     </Container>
   )

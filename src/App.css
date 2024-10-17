@@ -30,6 +30,13 @@ body{
     flex-direction: column;
     gap: 60px;
 }
+#particles canvas {
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
 h1,h2,h3,p{
     color: var(--text-color);
     margin: 0;
@@ -48,7 +55,7 @@ h2,h3{
 }
 h1{
     font-family: 'Rubik', sans-serif;
-    font-size: 32px;
+    font-size: 30px;
 }
 p{
     font-size: 16px;
@@ -62,14 +69,14 @@ p{
         gap: 100px;
     }
     h1{
-        font-size: 40px;
+        font-size: 30px;
 
     }
     h2,h3{
-        font-size: 24px;
+        font-size: 20px;
     }
     p{
-        font-size: 20px;
+        font-size: 18px;
     }
     
 }
@@ -79,8 +86,11 @@ p{
         gap: 200px;
     }
     h1{
-        font-size: 48px;
+        font-size: 40px;
 
     }
     
 }
+::-webkit-scrollbar {
+    display: none;
+  }

@@ -14,15 +14,20 @@ const A = styled.a`
 `;
 const Thumbnail = styled.img`
     //hover
-    max-width: 250px;
+    max-width: 200px;
     align-self: center;
     background-color: var(--project-card-bg);
     border-radius: 20px;
+    margin-bottom: 10px;
 `;
 const Projectname = styled.h3`
 
 `;
 const Desc = styled.p`
+    font-size: 1rem;
+    text-align: center;
+    max-width: 250px;
+    line-height: 1.4;
 
 `;
 

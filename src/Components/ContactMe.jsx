@@ -15,7 +15,7 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     gap: 30px;
-    max-width: 600px;  // Set the max width of the form
+    max-width: 600px;  
     margin: 0 auto;
 
     @media (min-width: 800px) {
@@ -35,8 +35,11 @@ const Input = styled.input`
     &::placeholder{
         color: var(--form-text-color);
     }
-    padding: 0 20px;  // Add padding inside input
+    padding: 0 20px;  
     width: 100%;
+    &:focus {
+    outline: none;
+  }
     
 `;
 const Desc = styled.textarea`
@@ -50,12 +53,16 @@ const Desc = styled.textarea`
         color: var(--form-text-color);
     }
 
-    width: 100%;          // Set the width to fill form area
+    width: 100%;          
     height: 150px; 
+   
+    &:focus {
+    outline: none;
+  }
 
     @media (min-width: 800px) {
     width: 100%;
-    font-size: 16px;     // Adjust font size
+    font-size: 16px;     
   }
 
   @media (min-width: 1400px) {

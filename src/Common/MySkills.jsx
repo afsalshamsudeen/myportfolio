@@ -10,6 +10,7 @@ const Image = styled.img`
     width: 20px;
 `;
 const Skill = styled.p`
+    font-family: "Roboto", sans-serif;
 
 @media (width >= 800px) {
       font-size: 20px;

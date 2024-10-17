@@ -12,6 +12,7 @@ import githublight from "../assets/github-light.svg";
 import githubdark from "../assets/github-dark.svg";
 import linkedinlight from "../assets/linkedin-light.svg";
 import linkedindark from "../assets/linkedin-dark.svg";
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CV from "../assets/cv.pdf";
 import { useTheme } from "../Common/ThemeContext";
 
@@ -56,7 +57,8 @@ const HeroImage = styled.img`
 `;
 const ThemeToggle = styled.img`
     position: absolute;
-    right: 0;
+    right: 0px;
+    top: 0px;
     width: 25px;
     
     &:hover{
@@ -68,7 +70,7 @@ const RightWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 20px;
+    gap: 10px;
 `;
 
 const Title = styled.h1`
@@ -77,7 +79,12 @@ const Title = styled.h1`
 const Br = styled.br`
 
 `;
-
+const Location = styled.h3`
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    color: #615f5f;
+`;
 const JobTitle = styled.h2`
 
 `;
@@ -144,6 +151,7 @@ const Hero = () => {
 
       <RightWrapper>
         <Title>Afsal<Br/>Shamsudeen</Title>
+        <Location><LocationOnIcon/> Trivandrum,Kerala</Location>
         <JobTitle>WebApp Developer</JobTitle>
         <Links>
             <Socials href="http://twitter.com/<ur username>" target="_blank">
@@ -157,7 +165,7 @@ const Hero = () => {
             </Socials>
 
         </Links>
-        <Desc>Web app developer with a passion for creating modern React applications that enhance user experiences.</Desc>
+        <Desc>I love coding and crafting things.</Desc>
             <Socials href={CV} download>
             <Resumebtn>Resume</Resumebtn>
             </Socials>
