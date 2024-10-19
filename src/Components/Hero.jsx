@@ -154,13 +154,13 @@ const Hero = () => {
         <Location><LocationOnIcon/> Trivandrum,Kerala</Location>
         <JobTitle>WebApp Developer</JobTitle>
         <Links>
-            <Socials href="http://twitter.com/<ur username>" target="_blank">
+            <Socials href="https://x.com/AfslShamsudeen1?s=35" target="_blank">
                 <Logo src={Twitter_Icon} alt="twitter icon"></Logo>            
             </Socials>
-            <Socials href="http://linkedin.com/<ur username>" target="_blank">
+            <Socials href="https://www.linkedin.com/in/afsalshamsudeen/" target="_blank">
                 <Logo src={LinkedIn_Icon} alt="linkedin icon"></Logo>            
             </Socials>
-            <Socials href="http://github.com/<ur username>" target="_blank">
+            <Socials href="https://github.com/afsalshamsudeen" target="_blank">
                 <Logo src={GitHub_Icon} alt="github icon"></Logo>            
             </Socials>
 

@@ -1,24 +1,26 @@
-import { useState } from 'react';
-import styled from 'styled-components';
+import { useState } from "react";
+import styled from "styled-components";
 
-import ChatBot_Icon from '../assets/chatbot_icon.png';
-import BotIcon from '../assets/bot_icon.png';
-import UserIcon from '../assets/user_icon.png';
-import ChatBubbleSharpIcon from '@mui/icons-material/ChatBubbleSharp';
-import RemoveIcon from '@mui/icons-material/Remove';
+import predefinedResponses from "../Common/response.json";
+
+import ChatBot_Icon from "../assets/chatbot_icon.png";
+import BotIcon from "../assets/bot_icon.png";
+import UserIcon from "../assets/user_icon.png";
+import ChatBubbleSharpIcon from "@mui/icons-material/ChatBubbleSharp";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const ChatContainer = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
   width: 300px;
-  height: 400px; 
-  max-height: 600px; 
+  height: 400px;
+  max-height: 600px;
   background: white;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: ${({ isVisible }) => (isVisible ? 'flex' : 'none')};
+  display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
   flex-direction: column;
   padding: 10px;
   z-index: 1000;
@@ -52,13 +54,13 @@ const ChatTitleContainer = styled.div`
 const ChatTitle = styled.div`
   font-weight: bold;
   font-size: 16px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 `;
 
 const ChatDescription = styled.div`
   font-size: 12px;
   color: #f0f0f0;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
 `;
 
 const CloseIconButton = styled.button`
@@ -82,25 +84,28 @@ const MessageList = styled.div`
   margin-bottom: 10px;
 
   ::-webkit-scrollbar {
-    display: none; 
+    display: none;
   }
-  scrollbar-width: none; 
-  background-color: white; 
+  scrollbar-width: none;
+  background-color: white;
 `;
 
 const MessageContainer = styled.div`
   display: flex;
   align-items: flex-start;
   margin: 5px 0;
-  justify-content: ${({ sender }) => (sender === 'user' ? 'flex-end' : 'flex-start')};
-  gap: 5px; 
+  justify-content: ${({ sender }) =>
+    sender === "user" ? "flex-end" : "flex-start"};
+  gap: 5px;
 `;
 
 const Message = styled.div`
-  margin: ${({ sender }) => (sender === 'user' ? '5px 0 5px 15px' : '5px 15px 5px 0')};
+  margin: ${({ sender }) =>
+    sender === "user" ? "5px 0 5px 15px" : "5px 15px 5px 0"};
   padding: 8px;
   border-radius: 5px;
-  background-color: ${({ sender }) => (sender === 'user' ? '#949494' : '#313131')};
+  background-color: ${({ sender }) =>
+    sender === "user" ? "#949494" : "#313131"};
   max-width: 70%;
   width: auto;
   word-wrap: break-word;
@@ -118,9 +123,9 @@ const BotIconStyled = styled.img`
 
 const UserIconStyled = styled.img`
   width: 30px;
-  height: 30px; 
+  height: 30px;
   border-radius: 50%;
-  margin-right: 5px; 
+  margin-right: 5px;
 `;
 
 const ChatInputContainer = styled.div`
@@ -171,81 +176,55 @@ const ToggleButton = styled.button`
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [isVisible, setIsVisible] = useState(false);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
 
   const toggleChatbot = () => {
     if (isVisible) {
-      setMessages([]); 
+      setMessages([]);
     } else {
       const welcomeMessage = {
-        text: "Welcome! I'm Mars, Afsal's personal chatbot. What more do you want to know?",
-        sender: 'bot',
+        text: "Welcome! I'm MARS, your personal assistant. I'm here to help answer all your questions about Afsal's journey, projects, and more. Feel free to ask me anything!",
+        sender: "bot",
       };
-      setMessages([welcomeMessage]); 
+      setMessages([welcomeMessage]);
     }
     setIsVisible((prev) => !prev);
   };
 
   const handleSendMessage = async () => {
     if (!input) return;
-    const userMessage = { text: input, sender: 'user' };
+    const userMessage = { text: input, sender: "user" };
     setMessages((prev) => [...prev, userMessage]);
-    setInput('');
+    const normalisedInput = input.toLowerCase().trim();
+    setInput("");
     setLoading(true);
 
-    const predefinedResponses = {
-        "Hey":"Hello!, how are you my friend",
-        "Hai":"Hey!, how are you my friend",
-        "Hello":"Hai!, how are you my friend",
-        "Halo":"Hey!, how are you my friend",
-        "Greetings":"Greetings!, how are you my friend",
-        "Tell me about yourself":"Hi! I am Afsal, a web developer with a passion for building web applications using React.js and Node.js. Feel free to ask me about my projects!",
-        "Tell me about you":"Hi! I am Afsal, a web developer with a passion for building web applications using React.js and Node.js. Feel free to ask me about my projects!",
-        "Can you introduce yourself":"Hi! I am Afsal, a web developer with a passion for building web applications using React.js and Node.js. Feel free to ask me about my projects!",
-        "What is your educational background": "I have a degree in Computer Science from Sarabhai Institute of Science and Technology, Vellanad.",
-        "Your educational background": "I have a degree in Computer Science from Sarabhai Institute of Science and Technology, Vellanad.",
-        "Education": "I have a degree in Computer Science from Sarabhai Institute of Science and Technology, Vellanad.",
-        "Where you studied": "I have a degree in Computer Science from Sarabhai Institute of Science and Technology, Vellanad.",
-        "What work experience do you have": "I have worked on several web development projects and currently working for a Start-Up company.",
-        "What is your experience": "I have worked on several web development projects and currently working for a Start-Up company.",
-        "Your experience": "I have worked on several web development projects and currently working for a Start-Up company.",
-        "What are your hobbies": "I enjoy coding, watching movies,tv shows, and travel.",
-        "Your hobbies": "I enjoy coding, watching movies,tv shows, and travel.",
-        "Hobbies": "I enjoy coding, watching movies,tv shows, and travel.",
-        "What are your career ambitions": "I aim to land on good position at any of the FAANG.",
-        "Your career ambitions": "I aim to land on good position at any of the FAANG.",
-        "Ambitions": "I aim to land on good position at any of the FAANG.",
-        "Can you tell me about your projects": "I have developed a E-commerce website and a streaming platform using MERN stack and several other projects.",
-        "What are your projects": "I have developed a E-commerce website and a streaming platform using MERN stack and several other projects.",
-        "Your projects": "I have developed a E-commerce website and a streaming platform using MERN stack and several other projects.",
-        "Projects": "I have developed a E-commerce website and a streaming platform using MERN stack and several other projects.",
-        "Contact": "Mobile:+91 12234567890, E-mail:myemail@gmail.com.",
-        "Contact informations": "Mobile:+91 12234567890, E-mail:myemail@gmail.com.",
-        "How to contact you": "Mobile:+91 12234567890, E-mail:myemail@gmail.com.",
-      };
+    const responseText =
+      predefinedResponses[normalisedInput] ||
+      "I'm sorry, I didn't understand that.";
 
-      const responseText = predefinedResponses[input] || "I'm sorry, I didn't understand that.";
-    
-      
-      setTimeout(() => {
-        const botMessage = {
-          text: responseText,
-          sender: 'bot',
-        };
-        setMessages((prev) => [...prev, botMessage]);
-        setLoading(false);
-      }, 1000);
+    setTimeout(() => {
+      const botMessage = {
+        text: responseText,
+        sender: "bot",
+      };
+      setMessages((prev) => [...prev, botMessage]);
+      setLoading(false);
+    }, 1000);
   };
 
   return (
     <>
-      <ToggleButton onClick={toggleChatbot}>
+      <ToggleButton
+        onClick={toggleChatbot}
+        aria-label={isVisible ? "Close chatbot" : "Open chatbot"}
+      >
         {isVisible ? <RemoveIcon /> : <ChatBubbleSharpIcon />}
       </ToggleButton>
+
       <ChatContainer isVisible={isVisible}>
-        
         {/* Chatbot Header */}
         <ChatHeader>
           <ChatTitleContainer>
@@ -262,12 +241,12 @@ const Chatbot = () => {
         <MessageList>
           {messages.map((msg, index) => (
             <MessageContainer key={index} sender={msg.sender}>
-              {msg.sender === 'bot' && (
+              {msg.sender === "bot" && (
                 <BotIconStyled src={BotIcon} alt="Bot Icon" />
               )}
-              
+
               <Message sender={msg.sender}>{msg.text}</Message>
-              {msg.sender === 'user' && (
+              {msg.sender === "user" && (
                 <UserIconStyled src={UserIcon} alt="User Icon" />
               )}
             </MessageContainer>
@@ -275,7 +254,7 @@ const Chatbot = () => {
           {loading && (
             <MessageContainer sender="bot">
               <BotIconStyled src={BotIcon} alt="Bot Icon" />
-              <Message sender="bot">typing...</Message> 
+              <Message sender="bot">typing...</Message>
             </MessageContainer>
           )}
         </MessageList>
@@ -287,6 +266,11 @@ const Chatbot = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask anything"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handleSendMessage();
+              }
+            }}
           />
           <ChatButton onClick={handleSendMessage}>Send</ChatButton>
         </ChatInputContainer>
